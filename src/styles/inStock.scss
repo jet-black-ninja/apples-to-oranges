@@ -1,0 +1,15 @@
+@import "./variables.scss";
+.inStock{  
+    display:flex;
+    align-items: center;
+    font-size: 14px;
+    color: $color-blue;
+    white-space: nowrap;
+}
+
+.box{
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    fill: $color-blue;
+}
