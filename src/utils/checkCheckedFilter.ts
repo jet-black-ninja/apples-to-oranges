@@ -1,5 +1,5 @@
 import {Filters} from "../data/types"
-//returnn array containing the names of all checked filters
+//return array containing the names of all checked filters
 function getCheckedFilters(filters:Filters){
     const {colors, families, vitamins} = filters;
     const checkedColors = colors.filter((color) => color.isChecked);
