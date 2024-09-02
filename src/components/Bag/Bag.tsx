@@ -25,7 +25,7 @@ export default function Bag() {
 
     return (
         <div className ="bag">
-            <ButtonBack className="buttonBack" onClick={handleGoBack}/>
+            <ButtonBack className="buttonBack-1" onClick={handleGoBack}/>
             <h2>Shopping Bag</h2>
 
             <div className ="main">
@@ -40,7 +40,7 @@ export default function Bag() {
                 <div className="rightContainer">
                     <div className="checkout">
                         <h2>Order Summary</h2>
-                        <h2 className="priceTotal">${totalPrice}</h2>
+                        <h2 className="priceTitle">${totalPrice}</h2>
                         <div className="subtotal">
                             <div className="subtotalName">Subtotal(3 items)</div>
                             <div className="subtotalPrice">${subtotalPrice}</div>

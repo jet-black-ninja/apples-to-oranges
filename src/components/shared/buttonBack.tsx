@@ -7,7 +7,7 @@ interface Props{
 }
 function ButtonBack({className="" , onClick}:Props){
     return (
-        <button className={`backButton ${className}`} onClick={onClick} >
+        <button className={`buttonBack ${className}`} onClick={onClick} >
         <BackIcon className="backIcon"/>
         </button>
     )
