@@ -1,0 +1,96 @@
+@import './variables.scss';
+
+.leftContainer{
+    gap:30px;
+    display:flex;
+    align-items:center;
+    @media screen and (max-width:680px){
+        gap:18px;
+    }
+    @media screen and (max-width:360px){
+        gap:12px;
+    }
+}
+
+.rightContainer{
+    gap:50px;
+    align-self: stretch;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    @media screen and (max-width:680px){
+        flex-direction: column;
+        gap:70px;
+        align-items:flex-end;
+        justify-content: center;
+    }
+}
+
+.imageContainer{
+    padding: 55px;
+    background-color:$color-100;
+    border-radius:8px;
+    @media screen and (max-width:360px){
+        padding: 40px;
+    }
+}
+
+.infoAndQuantity{
+    gap:60px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    @media screen and (max-width:680px){
+        flex-direction: column;
+        align-items: flex-start;
+        gap:15px;
+    }
+    @media screen and (max-width:360px){
+        gap:8px;
+    }
+}
+
+.info{
+    gap:5px;
+    height:35px;
+    width: 35px;
+    @media screen and (max-width: 360px){
+        height:30px;
+        width:30px;
+    }
+}
+
+.bagFruit{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.qty{
+    font-size:14px;
+    color:$color-400;
+    font-weight:400;
+}
+.family{
+    white-space:nowrap;
+}
+
+.deleteIcon{
+    height: 14px;
+    width: 14px;
+    fill: $color-red;
+}
+
+.delete{
+    cursor: pointer;
+    width: 24px;
+    height:24px;
+    border: solid 1px $color-200;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    &:hover{
+        background-color: $color-200;
+    }
+}
