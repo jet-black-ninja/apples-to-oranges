@@ -1,0 +1,13 @@
+.navbarLinks {
+    display: flex;
+    transform: translateY(4px);
+  }
+  
+  .link {
+    padding: 15px 10px;
+    border-bottom: 2px solid transparent;
+    &:hover{
+        box-sizing: border-box;
+    border-color: black;
+    }
+  }
