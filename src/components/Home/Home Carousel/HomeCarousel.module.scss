@@ -1,0 +1,41 @@
+
+.carouselFruit{
+    background-color:$color-100;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+}
+
+.image{
+    height:60px;
+    width: 60px;
+}
+.carouselFruit{
+    position: relative;
+}
+
+.info{
+    position: absolute;
+    $spacing: 17px;
+    bottom :$spacing;
+    left: $spacing;
+}
+// carousel
+
+.homeCarousel{
+    width: 700px;
+    @media (max-width: 1024px) {
+          width: 466px;
+    }
+    @media (max-width: 600px) {
+        width: 220px;
+    }
+}
+
+.carouselItem{
+    height: 240px;
+}
+

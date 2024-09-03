@@ -1,7 +1,7 @@
 import {useState, createContext, useContext, ReactNode, FC, Dispatch , SetStateAction} from "react";
 import {initialFruits} from "./data/fruits";
 import { initialFilters } from "./data/filters";
-import {Fruits} from "./data/types";
+import { Fruits} from "./data/types";
 import { Filters } from "./data/types";
 
 type SetFruits = Dispatch<SetStateAction<Fruits>>;
