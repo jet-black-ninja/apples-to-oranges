@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import "../../styles/buttonBlue.scss"
+import styles from "./buttonBlue.module.scss"
 
 interface Props{
     className?:string;
@@ -9,8 +9,8 @@ interface Props{
 
 export default function ButtonBlue ({className="", text="Checkout", onClick}:Props){
     return (
-        <button className={`buttonBlue ${className}`} onClick={onClick}>
-            {text}
+        <button className={`${styles.buttonBlue} ${className}`} onClick={onClick}>
+          {text}
         </button>
-    );
+      );
 };

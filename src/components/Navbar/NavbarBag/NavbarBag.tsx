@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import BagTooltip from "./BagTooltip/BagTooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import styles from "./NavbarBag.module.css";
+import styles from "./NavbarBag.module.scss";
 import BagIcon from "../../../icons/BagIcon";
 
 const NavbarBag = () => {

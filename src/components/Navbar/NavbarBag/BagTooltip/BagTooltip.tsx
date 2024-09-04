@@ -4,8 +4,8 @@ import styles from "./BagTooltip.module.scss";
 import getImageSrc from "../../../../utils/getImageSrc";
 import showCheckoutMessage from "../../../../utils/showCheckoutMessage";
 import { Fruits } from "../../../../data/types";
-import ButtonWhite from "../../../shared/ButtonWhite";
-import ButtonBlue from "../../../shared/ButtonBlue";
+import ButtonWhite from "../../../shared/ButtonWhite/ButtonWhite";
+import ButtonBlue from "../../../shared/ButtonBlue/ButtonBlue";
 import DeleteIcon from "../../../../icons/DeleteIcon";
 
 interface BagTooltipProps{

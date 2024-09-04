@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
-import '../../styles/buttonWhite.scss';
-import BagIcon from "../../icons/BagIcon";
+import styles from './buttonWhite.module.scss';
+import BagIcon from "../../../icons/BagIcon";
 
 interface Props{
     className?:string;
@@ -10,9 +10,9 @@ interface Props{
 
 export default function ButtonWhite({className="", text="Add to Bag", onClick}:Props) {
     return (
-        <button className={`buttonWhite ${className}`} onClick={onClick}>
-            <BagIcon className="bag"/>
-            {text}
+        <button className={`${styles.buttonWhite} ${className}`} onClick={onClick}>
+          <BagIcon className={styles.bag} />
+          {text}
         </button>
-    );
+      );
 };

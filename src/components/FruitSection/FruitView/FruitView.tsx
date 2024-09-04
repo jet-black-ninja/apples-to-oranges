@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import styles from './FruitView.module.scss'
 import getImageSrc from "../../../utils/getImageSrc";
 import { fruitDescriptions } from "../../../data/fruitDescriptions";
-import EditQuantity from "../../shared/EditQuantity";
-import InStock from "../../shared/InStock";
-import ButtonBlue from "../../shared/ButtonBlue";
-import ButtonWhite from "../../shared/ButtonWhite";
-import ButtonBack from "../../shared/ButtonBack";
+import EditQuantity from "../../shared/EditQuantity/EditQuantity";
+import InStock from "../../shared/InStock/InStock";
+import ButtonBlue from "../../shared/ButtonBlue/ButtonBlue";
+import ButtonWhite from "../../shared/ButtonWhite/ButtonWhite";
+import ButtonBack from "../../shared/ButtonBack/ButtonBack";
 import FavoriteIcon from "../../../icons/FavoriteIcon";
 
 const FruitView = () => {

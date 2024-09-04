@@ -1,7 +1,7 @@
-import {useStoreContext} from "../../Context.tsx";
-import  "../../styles/editQuantity.scss";
-import MinusIcon from "../../icons/MinusIcon.tsx";
-import PlusIcon from "../../icons/PlusIcon.tsx";
+import {useStoreContext} from "../../../Context.tsx";
+import  styles from "./editQuantity.module.scss";
+import MinusIcon from "../../../icons/MinusIcon.tsx";
+import PlusIcon from "../../../icons/PlusIcon.tsx";
 
 export default function EditQuantity({fruit}){
     const {setFruits} =useStoreContext();
@@ -20,15 +20,15 @@ export default function EditQuantity({fruit}){
         );
     };
     return (
-        <div className="editQuantity">
-            <div className = "editButton" onClick={handleMinusClick}>
-                <MinusIcon className="icon"/>
-            </div>
-            <div className="number">{quantity}</div>
-            <div className ="editButton" onClick={handlePlusClick}>
-                <PlusIcon className="icon"/>
-            </div>
-        </div>
+        <div className={styles.editQuantity}>
+      <div className={styles.editButton} onClick={handleMinusClick}>
+        <MinusIcon className={styles.icon} />
+      </div>
+      <div className={styles.number}>{quantity}</div>
+      <div className={styles.editButton} onClick={handlePlusClick}>
+        <PlusIcon className={styles.icon} />
+      </div>
+    </div>
 
     )
 

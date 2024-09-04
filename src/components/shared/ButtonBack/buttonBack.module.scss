@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "../../../styles/variables.scss";
 
 .backIcon{
     height:28px;
@@ -15,6 +15,6 @@
     padding:6px;
     transition: background-color 0.3s ease;
     &:hover{
-        background-color:$color-200
+        background-color:$color-200;
     }    
 }

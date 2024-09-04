@@ -1,45 +1,47 @@
 import { useStoreContext } from "../../../Context";
 import { Link } from "react-router-dom";
-import "../../../styles/BagFruit.scss";
+import styles from "./BagFruit.module.scss";;
 import getImageSrc from "../../../utils/getImageSrc";
-import InStock from "../../shared/InStock";
-import EditQuantity from "../../shared/EditQuantity";
+import InStock from "../../shared/InStock/InStock";
+import EditQuantity from "../../shared/EditQuantity/EditQuantity";
 import DeleteIcon from "../../../icons/DeleteIcon";
 
 export default function BagFruit({ fruit }) {
-    const {setFruits} = useStoreContext();
-    const {id, name, slug, family, price, quantity}= fruit;
-    const handleDelete = () => {
-        setFruits((prevFruits) => prevFruits.map((f) => (f.id === id ? { ...f, inBag: false } : f)));
-    };
+    const { setFruits } = useStoreContext();
+  const { id, name, slug, family, price, quantity } = fruit;
 
-    return (
-        <li className ="bagFruit">
-            <div className= "leftContainer">
-                <Link to={`/store/${slug}`}>
-                <div className="imageContainer">
-                    <img className="image" src={getImageSrc(slug)} alt={name}/>
-                </div>
-                </Link>
+  const handleDelete = () => {
+    setFruits((prevFruits) => prevFruits.map((f) => (f.id === id ? { ...f, inBag: false } : f)));
+  };
 
-                <div className="infoAndQuantity">
-                    <div className="info">
-                        <h3>{name}</h3>
-                        <h4 className="family">{family} Family</h4>
-                        <InStock/>
-                        <div className="qty">Qty: {quantity}</div>
-                    </div>
-                    <EditQuantity fruit={fruit}/>
-                </div>
-            </div>
+  return (
+    <li className={styles.bagFruit}>
+      <div className={styles.leftContainer}>
+        <Link to={`/store/${slug}`}>
+          <div className={styles.imageContainer}>
+            <img className={styles.image} src={getImageSrc(slug)} alt={name} />
+          </div>
+        </Link>
 
-            <div className="rightContainer">
-                <div className="delete" onClick={handleDelete}>
-                    <DeleteIcon className="deleteIcon"/>
-                </div>
-                <h5 className="price">${(price * quantity).toFixed(1)}</h5>
-            </div>
-        </li>
-    )
+        <div className={styles.infoAndQuantity}>
+          <div className={styles.info}>
+            <h3>{name}</h3>
+            <h4 className={styles.family}>{family} Family</h4>
+            <InStock />
+            <div className={styles.qty}>Qty: {quantity}</div>
+          </div>
 
+          <EditQuantity fruit={fruit} />
+        </div>
+      </div>
+
+      <div className={styles.rightContainer}>
+        <div className={styles.delete} onClick={handleDelete}>
+          <DeleteIcon className={styles.deleteIcon} />
+        </div>
+
+        <h5 className={styles.price}>${(price * quantity).toFixed(1)}</h5>
+      </div>
+    </li>
+  );
 }

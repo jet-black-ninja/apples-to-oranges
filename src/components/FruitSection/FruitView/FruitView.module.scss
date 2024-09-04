@@ -1,5 +1,5 @@
 /* Spacing */
-
+@import "../../../styles/variables.scss";
 .fruitView {
     padding: 50px;
     padding-top: 60px;
@@ -133,14 +133,14 @@
     opacity: 1;
   }
   
-  @media screen and (max-width: 940px) {
+  @media screen and ( max-width: 940px) {
     .imageContainer {
       width: 360px;
       height: 360px;
     }
   }
   
-  @media screen and (max-width: 835px) {
+  @media screen and ( max-width: 835px) {
     .fruitView {
       flex-direction: column;
     }
@@ -167,7 +167,7 @@
     }
   }
   
-  @media screen and (max-width: 540px) {
+  @media screen and ( max-width: 540px) {
     .fruitView {
       padding: 30px;
       padding-top: 60px;

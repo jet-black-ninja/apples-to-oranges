@@ -1,65 +1,68 @@
 import { useStoreContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
-import "../../styles/Bag.scss"
+import styles from "./Bag.module.scss"
 import showCheckoutMessage from "../../utils/showCheckoutMessage";
 import BagFruit from "./BagFruit/BagFruit";
-import ButtonBlue from "../shared/ButtonBlue";
-import ButtonBack from "../shared/ButtonBack";
+import ButtonBlue from "../shared/ButtonBlue/ButtonBlue";
+import ButtonBack from "../shared/ButtonBack/ButtonBack";
 
 export default function Bag() {
     const navigate = useNavigate();
-    const {fruits} = useStoreContext();
-    const fruitsInBag = fruits.filter((fruit) => fruit.inBag);
-    const subtotalPrice : string = fruitsInBag
-        .reduce((total:number, fruit) => total + fruit.price * fruit.quantity, 0)
-        .toFixed(1);
-    const vatPrice :string = (parseFloat(subtotalPrice) * 0.2 ).toFixed(1);
-    const totalPrice : string = (parseFloat(subtotalPrice) + parseFloat(vatPrice)).toFixed(1);
+  const { fruits } = useStoreContext();
 
-    const handleGoBack = () => {
-        navigate(-1);
-    }
-    const handleCheckOutClick = () => {
-        showCheckoutMessage(fruitsInBag);
-    }
+  const fruitsInBag = fruits.filter((fruit) => fruit.inBag);
+  const subtotalPrice: string = fruitsInBag
+    .reduce((total: number, fruit) => total + fruit.price * fruit.quantity, 0)
+    .toFixed(1);
+  const vatPrice: string = (parseFloat(subtotalPrice) * 0.2).toFixed(1);
+  const totalPrice: string = (parseFloat(subtotalPrice) + parseFloat(vatPrice)).toFixed(1);
 
-    return (
-        <div className ="bag">
-            <ButtonBack className="buttonBack-1" onClick={handleGoBack}/>
-            <h2>Shopping Bag</h2>
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
-            <div className ="main">
-                <ul className="leftContainer">
-                    {fruitsInBag.length>0 ?(
-                        fruitsInBag.map((fruit) => <BagFruit key={fruit.id} fruit={fruit} />)
-                    ) :(
-                        <li className="emptyBag">Bag is Empty</li>
-                    )}
-                </ul>
+  const handleCheckoutClick = () => {
+    showCheckoutMessage(fruitsInBag);
+  };
 
-                <div className="rightContainer">
-                    <div className="checkout">
-                        <h2>Order Summary</h2>
-                        <h2 className="priceTitle">${totalPrice}</h2>
-                        <div className="subtotal">
-                            <div className="subtotalName">Subtotal(3 items)</div>
-                            <div className="subtotalPrice">${subtotalPrice}</div>
-                        </div>
-                        <div className="vat">
-                            <div className="vatName">Vat (20%)</div>
-                            <div className="vatPrice">${vatPrice}</div>
-                        </div>
-                        <hr/>
-                        <div className="total">
-                            <h2>Total</h2>
-                            <h2>${totalPrice}</h2>
-                        </div>
-                        <ButtonBlue className="checkoutButton" onClick={() => handleCheckOutClick()} />
-                    </div>
-                </div>
+  return (
+    <div className={styles.bag}>
+      <ButtonBack className={styles.buttonBack} onClick={handleGoBack} />
+
+      <h2>Shopping Bag</h2>
+
+      <div className={styles.main}>
+        <ul className={styles.leftContainer}>
+          {fruitsInBag.length > 0 ? (
+            fruitsInBag.map((fruit) => <BagFruit key={fruit.id} fruit={fruit} />)
+          ) : (
+            <li className={styles.emptyBag}>Bag is empty.</li>
+          )}
+        </ul>
+
+        <div className={styles.rightContainer}>
+          <div className={styles.checkout}>
+            <h2>Order Summary</h2>
+            <h2 className={styles.priceTitle}>${totalPrice}</h2>
+            <div className={styles.subtotal}>
+              <div className={styles.subtotalName}>Subtotal (3 items)</div>
+              <div className={styles.subtotalPrice}>${subtotalPrice}</div>
             </div>
+            <div className={styles.vat}>
+              <div className={styles.vatName}>VAT (20%)</div>
+              <div className={styles.vatPrice}>${vatPrice}</div>
+            </div>
+            <hr />
+            <div className={styles.total}>
+              <h2>Total</h2>
+              <h2>${totalPrice}</h2>
+            </div>
+            <ButtonBlue className={styles.checkoutButton} onClick={() => handleCheckoutClick()} />
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 

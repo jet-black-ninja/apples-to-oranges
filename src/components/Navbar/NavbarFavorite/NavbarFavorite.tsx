@@ -15,12 +15,14 @@ export default function NavbarFavorite() {
 
     return (
         <Link to="/store">
-            <div className={styles.NavbarFavorite}>
-                <FavoriteIcon className={styles.favorite}
-                isFilled={favorite}
-                onClick={handleFavoriteClick}/>
-                <div className={styles.number}>{favoriteCount}</div>
-            </div>
-            </Link>
-    )
+      <div className={styles.navbarFavorite}>
+        <FavoriteIcon
+          className={styles.favorite}
+          isFilled={favorite}
+          onClick={handleFavoriteClick}
+        />
+        <div className={styles.number}>{favoriteCount}</div>
+      </div>
+    </Link>
+  );
 }
