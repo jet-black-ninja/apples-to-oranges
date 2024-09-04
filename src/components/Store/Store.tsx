@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { slide as BurgerMenu } from "react-burger-menu";
 import styles from "./Store.module.scss";
 import "./burgerMenu.scss";
-import Sidebar from "../Sidebar/SideBar";
+import Sidebar from "../Sidebar/Sidebar";
 import FruitSection from "../FruitSection/FruitSection";
 import BurgerIcon from "../../icons/BurgerIcon";
 import CloseIcon from "../../icons/CloseIcon";
