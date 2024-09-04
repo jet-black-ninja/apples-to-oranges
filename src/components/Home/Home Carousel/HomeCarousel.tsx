@@ -7,30 +7,32 @@ import styles from "./HomeCarousel.module.scss";
 import getImageSrc from "../../../utils/getImageSrc";
 import { Fruit } from "../../../data/types";
 
-interface CarouselFruitProps{
+interface CarouselFruitProps {
     fruit: Fruit;
-}
-
-const CarouselFruit = ({fruit}: CarouselFruitProps) => {
-    const {name, slug} = fruit;
-    
+  }
+  
+  const CarouselFruit = ({ fruit }: CarouselFruitProps) => {
+    const { name, slug } = fruit;
+  
     return (
-        <Link to={`/store/${fruit}`}>
-            <div className={styles.carouselFruit}>
-                <img className={styles.image} src={getImageSrc(slug)} alt={name}/>
-                <div className={styles.info} >
-                    <h3>{name}</h3>
-                </div>
-            </div>
-        </Link>
+      <Link to={`/store/${slug}`}>
+        <div className={styles.carouselFruit}>
+          <img className={styles.image} src={getImageSrc(slug)} alt={name} />
+          <div className={styles.info}>
+            <h3>{name}</h3>
+          </div>
+        </div>
+      </Link>
     );
-};
+  };
 
 export default function HomeCarousel() {
-    const {fruits} = useStoreContext();
-    const carouselFruitNames = ["Cherries", "Avocado", "Tangerine", "Melon", "Grapes"];
-    const carouselFruits = carouselFruitNames.map((name)=> 
-    fruits.find((fruit) => fruit.name === name));
+    const { fruits } = useStoreContext();
+
+  const carouselFruitNames = ["Cherries", "Avocado", "Tangerine", "Melon", "Grapes"];
+  const carouselFruits = carouselFruitNames.map((name) =>
+    fruits.find((fruit) => fruit.name === name)
+  );
 
     const settings = {
         dots: true,
@@ -62,13 +64,13 @@ export default function HomeCarousel() {
 
     return (
         <div className={styles.homeCarousel}>
-            <Slider {...settings} >
-                {carouselFruits.map((fruit)=>(
-                    <div key={fruit.id} className={styles.carouselItem}>
-                        <CarouselFruit fruit = {fruit}/>
-                    </div>
-                ))}
-            </Slider>
-        </div>
+      <Slider {...settings}>
+        {carouselFruits.map((fruit) => (
+          <div key={fruit.id} className={styles.carouselItem}>
+            <CarouselFruit fruit={fruit} />
+          </div>
+        ))}
+      </Slider>
+    </div>
     )
 }

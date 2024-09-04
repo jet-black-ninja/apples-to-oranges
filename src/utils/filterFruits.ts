@@ -32,10 +32,10 @@ function matchesQuery(fruit, query){
 //Return true if the fruit matches all the checked checkboxes , otherwise false
 function matchesCheckboxes(fruit, colors, families, vitamins){
     const checkedColors = colors
-        .filter((color) => color.isChecked())
+        .filter((color) => color.isChecked)
         .map((color)=> color.name);
     const checkedFamilies = families
-        .filter((family) => family.isChecked())
+        .filter((family) => family.isChecked)
         .map((family) => family.name);
     const checkedVitamins = vitamins
         .filter((vitamin) => vitamin.isChecked)

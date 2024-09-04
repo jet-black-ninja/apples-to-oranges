@@ -22,20 +22,21 @@ const Store = () => {
     
     return(
         <div className={styles.store}>
-            {showBurger ?(
-                <BurgerMenu 
-                customBurgerIcon={<BurgerIcon/>}
-                customCrossIcon = {<CloseIcon/>}
-                width={"auto"}>
-                <Sidebar />
-                </BurgerMenu>
-            ):(
-                <>
-                <Sidebar />
-                </>
-            )}
-            <FruitSection />
-        </div>
+      {showBurger ? (
+        <BurgerMenu
+          customBurgerIcon={<BurgerIcon />}
+          customCrossIcon={<CloseIcon />}
+          width={"auto"}>
+          <Sidebar />
+        </BurgerMenu>
+      ) : (
+        <>
+          <Sidebar />
+        </>
+      )}
+
+      <FruitSection />
+    </div>
     );
 };
 export default Store;

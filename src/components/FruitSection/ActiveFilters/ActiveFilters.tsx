@@ -4,54 +4,54 @@ import getCheckedFilters from "../../../utils/checkCheckedFilter";
 import CloseIcon from "../../../icons/CloseIcon";
 
 const ActiveFilters = () => {
-    const {filters, setFilters} = useStoreContext();
-    const {colors, families, vitamins, query } = filters;
-    const handleCloseClick = (filterName) => {
-        const updateFilters= {
-            ...filters,
-            colors: colors.map((color) => 
-                color.name ===filterName ? {...color, isChecked : false}: color
-            ),
-            families : families.map((family) =>
-                family.name === filterName ? {...family, isChecked : false}: family
-            ),
-            vitamins : vitamins.map((vitamin) =>
-                vitamin.name === filterName? {...vitamin, isChecked : false}: vitamin
-            ),
-            query: ''
-        }
+    const { filters, setFilters } = useStoreContext();
+  const { colors, families, vitamins, query } = filters;
 
-        setFilters(updateFilters);
-    }
+  const handleCloseClick = (filterName) => {
+    const updatedFilters = {
+      ...filters,
+      colors: colors.map((color) =>
+        color.name === filterName ? { ...color, isChecked: false } : color
+      ),
+      families: families.map((family) =>
+        family.name === filterName ? { ...family, isChecked: false } : family
+      ),
+      vitamins: vitamins.map((vitamin) =>
+        vitamin.name === filterName ? { ...vitamin, isChecked: false } : vitamin
+      ),
+    };
 
-    const handleCloseQuery = () => {
-        setFilters({...filters, query: ""});
-    }
+    setFilters(updatedFilters);
+  };
 
-    const checkedFilters = getCheckedFilters(filters);
+  const handleCloseQuery = () => {
+    setFilters({ ...filters, query: "" });
+  };
 
-    if(!checkedFilters.length && !query ) return null;
+  const checkedFilters = getCheckedFilters(filters);
 
-    return (
-        <div className={styles.activeFilters}>
-            {checkedFilters.map((filter) => (
-                <div key={filter.name} className={styles.activeFilter}>
-                    {filter.name}
-                    <div className={styles.closeButton} onClick={() => handleCloseClick(filter.name)}>
-                        <CloseIcon className={styles.closeIcon} />
-                    </div>
-                </div>
-            ))}
+  if (!checkedFilters.length && !query) return null;
 
-            {query && (
-                <div className={styles.activeFilter}>
-                    "{query}"
-                    <div className={styles.closeButton} onClick={() => handleCloseQuery()}>
-                        <CloseIcon className={styles.closeIcon} />
-                    </div>
-                </div>
-            )}
+  return (
+    <div className={styles.activeFilters}>
+      {checkedFilters.map((filter) => (
+        <div key={filter.name} className={styles.activeFilter}>
+          {filter.name}
+          <div className={styles.closeButton} onClick={() => handleCloseClick(filter.name)}>
+            <CloseIcon className={styles.closeIcon} />
+          </div>
         </div>
-    )
+      ))}
+
+      {query && (
+        <div className={styles.activeFilter}>
+          "{query}"
+          <div className={styles.closeButton} onClick={() => handleCloseQuery()}>
+            <CloseIcon className={styles.closeIcon} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 export default ActiveFilters;
