@@ -5,12 +5,12 @@ import SidebarVitamins from "./sidebarVitamins/SidebarVitamins"
 
 const Sidebar = () => {
     return (
-        <div className={styles.sidebar}>
-            <SidebarColor/>
-            <SidebarFamily/>
-            <SidebarVitamins/>
-            </div>
+      <div className={styles.sidebar}>
+        <SidebarColor />
+        <SidebarFamily />
+        <SidebarVitamins />
+      </div>
     );
-};
-
-export default Sidebar;
+  };
+  
+  export default Sidebar;
