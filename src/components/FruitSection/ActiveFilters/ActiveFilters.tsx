@@ -4,7 +4,7 @@ import getCheckedFilters from "../../../utils/checkCheckedFilter";
 import CloseIcon from "../../../icons/CloseIcon";
 
 const ActiveFilters = () => {
-    const { filters, setFilters } = useStoreContext();
+  const { filters, setFilters } = useStoreContext();
   const { colors, families, vitamins, query } = filters;
 
   const handleCloseClick = (filterName) => {
