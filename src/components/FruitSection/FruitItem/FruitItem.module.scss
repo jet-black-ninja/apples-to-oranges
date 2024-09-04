@@ -1,0 +1,124 @@
+/* Dynamic Spacing */
+@import "../../../styles/variables.scss";
+.fruitItem {
+    $spacing: 25px;
+    $image-size: 60px;
+    $icon-size: 26px;
+  }
+  
+  .fruitItem {
+    background-color: $color-100;
+    border-radius: 8px;
+    aspect-ratio: 9 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .image {
+    transform: translateY(-10px);
+    height: $image-size;
+    width: $image-size;
+  }
+  
+  .info {
+    position: absolute;
+    bottom: $spacing;
+    left: $spacing;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .name,
+  .family,
+  .price {
+    font-size: 16px;
+  }
+  
+  .favorite,
+  .bag {
+    width: $icon-size;
+    height: $icon-size;
+    cursor: pointer;
+  }
+  
+  .favorite {
+    position: absolute;
+    top: $spacing;
+    right: $spacing;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .bag {
+    position: absolute;
+    bottom: $spacing;
+    right: $spacing;
+    transition: transform 0.2s ease;
+  }
+  
+  @media screen and (max-width: 940px) {
+    .fruitItem {
+      $spacing: 15px;
+      aspect-ratio: 9 / 12;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .fruitItem {
+      $spacing: 20px;
+      aspect-ratio: 9 / 10;
+    }
+  }
+  
+  @media screen and (max-width: 540px) {
+    .fruitItem {
+      $spacing: 12px;
+      $image-size: 52px;
+      $icon-size: 20px;
+      border-radius: 5px;
+      aspect-ratio: 10 / 12;
+    }
+  
+    .name,
+    .family,
+    .price {
+      font-size: 12px;
+    }
+  
+    .info {
+      gap: 4px;
+    }
+  }
+  
+  @media screen and (max-width: 360px) {
+    .fruitItem {
+      aspect-ratio: 10 / 16;
+    }
+  }
+  
+  /* Other styles */
+  
+  .fruitItem:hover .favorite {
+    opacity: 1;
+  }
+  
+  .favorite:hover {
+    transform: scale(1.2);
+  }
+  
+  .favorite.clicked {
+    fill: $color-red;
+    opacity: 1;
+  }
+  
+  .family {
+    color: $color-400;
+  }
+  
+  .bag:hover {
+    transform: scale(1.2);
+  }
+  
