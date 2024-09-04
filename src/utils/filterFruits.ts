@@ -1,77 +1,86 @@
-import {Filters, Fruits} from "../data/types"
+import { Filters, Fruits } from "../data/types";
 
-//Return true if the fruit matched the query , otherwise false
+// Returns true if the fruit matches the query, otherwise false
+function matchesQuery(fruit, query) {
+  const getCleanStr = (str) => {
+    return str.replace(/\s+/g, "").toLowerCase();
+  };
 
-function matchesQuery(fruit, query){
-    const getCleanStr =(str:string) =>{
-        return str.replace(/\s+/g,"").toLowerCase();//remove all whitespace with empty string
-    }
+  const getCleanQuery = (str) => {
+    return getCleanStr(str).replace(/[^\w\s]/gi, "");
+  };
 
-    const getCleanQuery = (str:string) => {
-        return getCleanStr(str).replace(/[^\w\s]/gi,"");//replace all non characters and white spaces
-    }
+  const cleanQuery = getCleanQuery(query);
 
-    const cleanQuery = getCleanQuery(query);
+  // If there's a query, perform checks
+  if (cleanQuery) {
+    const matchString = (str) => getCleanStr(str).includes(cleanQuery);
 
-    if(cleanQuery){
-        const matchString = (str) => getCleanStr(str).includes(cleanQuery);
-        const matchVitamins = (arr) => arr.some((vitamin) => matchString(vitamin));
-        const matchColors = (arr) => arr.some((color) => matchString(color+"color"));
+    const matchVitamins = (arr) => arr.some((vitamin) => matchString(vitamin));
+    const matchColors = (arr) => arr.some((color) => matchString(color + "color"));
 
-        const anyMatch = 
-        matchString(fruit.name +"fruit") ||
-        matchString(fruit.family +"family")||
-        matchVitamins(fruit.vitamins)||
-        matchColors(fruit.colors);
-        return anyMatch;
-    }
-//when no query ,its an auto match 
-    return true;
+    const anyMatch =
+      matchString(fruit.name + "fruit") ||
+      matchString(fruit.family + "family") ||
+      matchVitamins(fruit.vitamins) ||
+      matchColors(fruit.colors);
+
+    return anyMatch;
+  }
+
+  // If there's no query it's always a match
+  return true;
 }
 
-//Return true if the fruit matches all the checked checkboxes , otherwise false
-function matchesCheckboxes(fruit, colors, families, vitamins){
-    const checkedColors = colors
-        .filter((color) => color.isChecked)
-        .map((color)=> color.name);
-    const checkedFamilies = families
-        .filter((family) => family.isChecked)
-        .map((family) => family.name);
-    const checkedVitamins = vitamins
-        .filter((vitamin) => vitamin.isChecked)
-        .map((vitamin) => vitamin.name);
+// Returns true if the fruit matches all checked checkboxes, otherwise false
+function matchesCheckboxes(fruit, colors, families, vitamins) {
+  const checkedColors = colors.filter((color) => color.isChecked).map((color) => color.name);
+  const checkedFamilies = families
+    .filter((family) => family.isChecked)
+    .map((family) => family.name);
+  const checkedVitamins = vitamins
+    .filter((vitamin) => vitamin.isChecked)
+    .map((vitamin) => vitamin.name);
 
-    //if any checkboxes are checked , perform checks
-    if(checkedColors.length || checkedFamilies.length || checkedVitamins.length ){
-        const colorMatch = checkedColors.every((checkedColor) => fruit.colors.includes(checkedColor));
-        const familyMatch = checkedFamilies.every((checkedFamily) => fruit.family.includes(checkedFamily));
-        const vitaminMatch = checkedVitamins.every((checkedVitamin) => fruit.vitamins.includes(checkedVitamin));
+  // If any checkboxes are checked, perform checks
+  if (checkedColors.length || checkedFamilies.length || checkedVitamins.length) {
+    const colorMatch = checkedColors.every((checkedColor) => fruit.colors.includes(checkedColor));
+    const familyMatch = checkedFamilies.every((checkedFamily) =>
+      fruit.family.includes(checkedFamily)
+    );
+    const vitaminMatch = checkedVitamins.every((checkedVitamin) =>
+      fruit.vitamins.includes(checkedVitamin)
+    );
 
-        return colorMatch && familyMatch && vitaminMatch;
-    }
-    // no checked boxes mean always match
-    return true;
-}
-// return true always, unless favorite filter is checked and fruit.favorite is false
-function matchesFavorites(fruit, favorite){
-    if(favorite && !fruit.isFavorite){
-        return false;
-    }
+    return colorMatch && familyMatch && vitaminMatch;
+  }
 
-    return true;
+  // If there's no checked boxes it's always a match
+  return true;
 }
 
-function filterFruits(fruits:Fruits, filters:Filters){
-    const{colors, families, vitamins, favorite, query} = filters;
+// Returns true always, except if the favorite filter is is true and fruit.isFavorite is false
+function matchesFavorite(fruit, favorite) {
+  if (favorite && !fruit.isFavorite) {
+    return false;
+  }
 
-    const filteredFruits = fruits.filter((fruit) => {
-        const favoriteMatch = matchesFavorites(fruit, favorite);
-        const queryMatch = matchesQuery(fruit, query);
-        const checkBoxMatch = matchesCheckboxes(fruits, colors, families, vitamins);
+  return true;
+}
 
-        return favoriteMatch && queryMatch && checkBoxMatch;
-    });
-    return filteredFruits;
+// Returns an array of fruits that match the filters
+function filterFruits(fruits: Fruits, filters: Filters) {
+  const { colors, families, vitamins, favorite, query } = filters;
+
+  const filteredFruits = fruits.filter((fruit) => {
+    const favoriteMatch = matchesFavorite(fruit, favorite);
+    const queryMatch = matchesQuery(fruit, query);
+    const checkboxesMatch = matchesCheckboxes(fruit, colors, families, vitamins);
+
+    return favoriteMatch && queryMatch && checkboxesMatch;
+  });
+
+  return filteredFruits;
 }
 
 export default filterFruits;
