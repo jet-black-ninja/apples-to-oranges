@@ -1,3 +1,4 @@
+@import "../../../styles/variables.scss";
 .title {
     cursor: pointer;
     display: flex;
@@ -25,14 +26,14 @@
     border-radius: 10px;
     transition: background-color 0.2s ease;
     &:hover {
-        background-color: var(--color-100);
+        background-color: $color-100;
         }
 }
 
 .checkbox {
     width: 20px;
     height: 20px;
-    border: solid 1px var(--color-300);
+    border: solid 1px $color-300;
     border-radius: 4px;
     margin-right: 8px;
     display: flex;
